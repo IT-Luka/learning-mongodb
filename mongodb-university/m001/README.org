@@ -2,6 +2,12 @@
 #+AUTHOR: Luka Marković
 #+STARTUP: overview
 
+*   TOC :toc:
+-   [[#commands][Commands]]
+  -  [[#find][find]]
+  -  [[#update][update]]
+  -  [[#delete][delete]]
+
 *   Commands
 show dbs and show collections
 #+begin_src js
