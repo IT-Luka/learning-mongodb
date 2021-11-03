@@ -1,2 +1,83 @@
-#+TITLE: MongoDB University M001
+#+TITLE: M001
+#+AUTHOR: Luka Marković
+#+STARTUP: overview
 
+*   Commands
+show dbs and show collections
+#+begin_src js
+show dbs
+show collections
+#+end_src
+
+use "sample_training" db
+#+begin_src js
+use sample_training 
+#+end_src
+
+count results
+#+begin_src js
+.count()
+db.zips.find({"state":"NY", "city":"ALBANY"}).counts
+#+end_src
+
+insert
+#+begin_src js
+insert()
+db.collection.insert([{"test": 1}, {"test": 2}, {test: 3}])
+#+end_src
+
+**  find
+find in zips collection
+#+begin_src js
+db.zips.find({"state":"NY", "city":"ALBANY"})
+#+end_src
+
+find one document
+#+begin_src js
+findOne()
+#+end_src
+
+**  update
+update one
+#+begin_src js
+updateOne()
+#+end_src
+
+update many
+#+begin_src js
+updateMany()
+#+end_src
+
+***  Update operators
+increment value
+#+begin_src js
+{"$inc":{'field':'value','field2':'value2',...}}
+db.collection.updateMany({'selectfield':'selectvalue'},{"$inc": {"pop":10, "<field2>": <increment value>, ...}})
+#+end_src
+
+set value
+#+begin_src js
+{"$set":{'field':'value','field2':'value2',...}}
+#+end_src
+
+push value
+#+begin_src js
+{"$push":{'field':'value','field2':'value2',...}}
+#+end_src
+
+**  delete
+delete one *only goood whend querying by _id*
+#+begin_src js
+deleteOne()
+db.collection.deleteOne({"field":"value"})
+#+end_src
+
+delete many
+#+begin_src js
+deleteMany()
+#+end_src
+
+delete collection
+#+begin_src js
+db.collection.drop()
+#+end_src
