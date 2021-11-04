@@ -26,20 +26,20 @@ use sample_training
 count results
 #+begin_src js
 .count()
-db.zips.find({'state':'NY', 'city':'ALBANY'}).counts
+db.collection.find({<field>:<value>,<field2>:<value2>,...}).count()
 #+end_src
 
 insert
 #+begin_src js
 insert()
-db.collection.insert([{'test': 1}, {'test': 2}, {test: 3}])
+db.collection.insert([{<field>:<value>,<field2>:<value2>,...])
 #+end_src
 
 **  query
 find in collection
 #+begin_src js
 find()
-db.zips.find({'state':'NY', 'city':'ALBANY'})
+db.collection.find({<field>:<value>,<field2>:<value2>,...})
 #+end_src
 
 find one document
@@ -121,18 +121,18 @@ updateMany()
 ***  update operators
 increment value
 #+begin_src js
-{'$inc':{'field':'value','field2':'value2',...}}
+{'$inc':{<field>:<value>,<field2>:<value2>,...}}
 db.collection.updateMany({'selectfield':'selectvalue'},{'$inc': {'pop':10, '<field2>': <increment value>, ...}})
 #+end_src
 
 set value
 #+begin_src js
-{'$set':{'field':'value','field2':'value2',...}}
+{'$set':{<field>:<value>,<field2>:<value2>,...}}
 #+end_src
 
 push value
 #+begin_src js
-{'$push':{'field':'value','field2':'value2',...}}
+{'$push':{<field>:<value>,<field2>:<value2>,...}}
 #+end_src
 
 ***  array operators
@@ -144,7 +144,7 @@ $push
 delete one *only goood whend querying by _id*
 #+begin_src js
 deleteOne()
-db.collection.deleteOne({'field':'value'})
+db.collection.deleteOne({<field>:<value>})
 #+end_src
 
 delete many
