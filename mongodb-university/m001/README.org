@@ -2,10 +2,13 @@
 #+AUTHOR: Luka Marković
 #+STARTUP: overview
 
-*   TOC :toc:
+*   TOC :toc_3:
 -   [[#commands][commands]]
   -  [[#query][query]]
+    - [[#query-operators][query operators]]
   -  [[#update][update]]
+    -  [[#update-operators][update operators]]
+    -  [[#array-operators][array operators]]
   -  [[#delete][delete]]
 
 *   commands
