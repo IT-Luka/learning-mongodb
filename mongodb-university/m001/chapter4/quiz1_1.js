@@ -1,1 +1,8 @@
-console.log(db.inspections.find({'result': {'$eq': 'Out of Business'}, 'sector': {'$eq': 'Home Improvement Contractor - 100'}}).count())
+console.log(
+  db.inspections
+    .find({
+      result: "Out of Business",
+      sector: "Home Improvement Contractor - 100",
+    })
+    .count()
+);

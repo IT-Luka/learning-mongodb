@@ -8,7 +8,6 @@
     - [[#query-operators][query operators]]
   -  [[#update][update]]
     -  [[#update-operators][update operators]]
-    -  [[#array-operators][array operators]]
   -  [[#delete][delete]]
 
 *   commands
@@ -47,6 +46,13 @@ find one document
 findOne()
 #+end_src
 
+projection
+1 - include the filed and only project included fields
+0 - exclude the field and only project fields that aren't excluded\
+you can mix 1 and 0 only if excluding _id
+#+begin_src js
+db.collection.find({<query parameters>}, {<projection_field>:1, <projection_field2>:1})
+#+end_src
 *** query operators
 ****    comparison operators
 {<field>:{<operator>: <value>}}
@@ -107,6 +113,35 @@ aggregation syntax: { <operator>: { <field>, <value> } }
 #+begin_src js
 {'$gt': ['$tripduration', 1200]}
 #+end_src
+****    array operators
+{ <array>: [$operator:{}, $operator2{}]}
+
+add element to array or turns a field into an array field
+#+begin_src js
+$push
+#+end_src
+
+array has these fields
+#+begin_src js
+$all
+#+end_src
+
+size of the array
+#+begin_src js
+$size
+#+end_src
+
+access elements of the array
+{<field>: {$elemMatch: {<field>: <value>}}}
+#+begin_src js
+$elemMatch
+#+end_src
+****    regex
+regex operator
+#+begin_src js
+$regex
+{$regex: "<value>"}
+#+end_src
 **  update
 update one
 #+begin_src js
@@ -135,11 +170,6 @@ push value
 {'$push':{<field>:<value>,<field2>:<value2>,...}}
 #+end_src
 
-***  array operators
-add element to array or turns a field into an array field
-#+begin_src js
-$push
-#+end_src
 **  delete
 delete one *only goood whend querying by _id*
 #+begin_src js
