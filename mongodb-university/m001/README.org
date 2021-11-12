@@ -9,6 +9,9 @@
   -  [[#update][update]]
     -  [[#update-operators][update operators]]
   -  [[#delete][delete]]
+  -  [[#aggregation][aggregation]]
+  -  [[#cursor-methods][cursor methods]]
+  -  [[#index][index]]
 
 *   commands
 show dbs and show collections
@@ -20,12 +23,6 @@ show collections
 use 'sample_training' db
 #+begin_src js
 use sample_training 
-#+end_src
-
-count results
-#+begin_src js
-.count()
-db.collection.find({<field>:<value>,<field2>:<value2>,...}).count()
 #+end_src
 
 insert
@@ -136,6 +133,12 @@ access elements of the array
 #+begin_src js
 $elemMatch
 #+end_src
+
+element at array index
+#+begin_src js
+$arrayElemAt: [<field>, <index>]
+{$arrayElemAt:['$user', 1]}
+#+end_src
 ****    regex
 regex operator
 #+begin_src js
@@ -151,6 +154,11 @@ updateOne()
 update many
 #+begin_src js
 updateMany()
+#+end_src
+
+update and insert
+#+begin_src js
+db.collection.updateOne({<query>}, {<update}, {upsert: true})
 #+end_src
 
 ***  update operators
@@ -185,4 +193,59 @@ deleteMany()
 delete collection
 #+begin_src js
 db.collection.drop()
+#+end_src
+
+**  aggregation
+.aggregate([{},{},...])
+
+find matching
+#+begin_src js
+$match
+#+end_src
+
+project from cursor
+#+begin_src js
+$project:{<field>:1/0}
+#+end_src
+
+group all documents into value
+#+begin_src js
+$group
+$group:{_id: '$address.country'}
+#+end_src
+
+addition
+#+begin_src js
+$sum
+'count':{$sum: 1}
+#+end_src
+
+**  cursor methods
+sort
+#+begin_src js
+$sort
+{$sort:{pop: 1}}
+// 1 from highest, -1 from lowest
+#+end_src
+
+limit the number of results
+#+begin_src js
+.limit(<int of results>)
+#+end_src
+
+count results
+#+begin_src js
+.count()
+db.collection.find({<field>:<value>,<field2>:<value2>,...}).count()
+#+end_src
+
+**  index
+single field index
+#+begin_src js
+db.collection.createIndex({<field>: 1})
+#+end_src
+
+compound index, better to sort by second field
+#+begin_src js
+db.collection.createIndex({<field1>:1, <field2>:2})
 #+end_src
